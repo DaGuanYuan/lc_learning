@@ -1,7 +1,7 @@
 # lc_learning
 
 #### Description
-Wonder wonder odyssey
+Wonder wonder odyssey...
 
 #### Catalog
 1.  Non-DP & DP
