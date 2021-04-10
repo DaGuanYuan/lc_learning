@@ -1,7 +1,7 @@
 # lc_learning
 
 #### 介绍
-Wonder wonder odyssey
+Wonder wonder odyssey...
 
 #### 目录
 1.  Non-DP & DP
