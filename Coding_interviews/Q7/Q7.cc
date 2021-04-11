@@ -24,13 +24,13 @@ public:
 
 class Solution {
 public:
-    TreeNode* ReconstructionTree(std::vector<int>& pre_order, std::vector<int>& in_order, int length) {
+    TreeNode* reConstructionTree(std::vector<int>& pre_order, std::vector<int>& in_order, int length) {
         if (pre_order.empty() || in_order.empty() || in_order.size()!=pre_order.size() || length <= 0) {
             return nullptr;
         }
     }
 
-    TreeNode* ReconstructionTree(std::vector<int>& pre_order,
+    TreeNode* reConstructionTree(std::vector<int>& pre_order,
                                  std::vector<int>&in_order,
                                  int length,
                                  int startPreorder,
