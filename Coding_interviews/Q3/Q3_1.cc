@@ -1,5 +1,5 @@
-#include "iostream"
-#include "vector"
+#include <iostream>
+#include <vector>
 #define ERROR false
 
 //Given range of array {0, 1, 2, ..., n-1}

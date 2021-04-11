@@ -1,7 +1,7 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<ctime>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <ctime>
 
 class Person {
 public:

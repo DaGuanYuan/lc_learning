@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../DataStucture/LinkNode.h"
+#include "../../DataStructure/LinkNode.h"
 #include <stack>
 
 //Q6 Solution

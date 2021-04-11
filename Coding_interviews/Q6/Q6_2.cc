@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../DataStucture/LinkNode.h"
+#include "../../DataStructure/LinkNode.h"
 
 void AddtoTail(LinkNode** pHead, int value) {
     LinkNode* pNew = new LinkNode(value);

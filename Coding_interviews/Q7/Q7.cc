@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include "../DataStucture/BinaryTree.h"
+#include "../../DataStructure/BinaryTree.h""
 
 class Solution {
 public:

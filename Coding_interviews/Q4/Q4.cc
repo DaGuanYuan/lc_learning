@@ -1,5 +1,5 @@
-#include "vector"
-#include "iostream"
+#include <vector>
+#include <iostream>
 
 class Solution {
 public:
