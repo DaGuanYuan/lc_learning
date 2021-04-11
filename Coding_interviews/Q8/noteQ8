@@ -1,0 +1,27 @@
+			a
+
+		b		c
+
+	    d       e	    f       g
+
+		  h   i           
+   
+	inOrder{d, b, h, e, i, a, f, c, g}
+
+for node p:
+1. if p has a right child ----- left->root->right(left->left->left...->left->root->right(...))
+  <1>. if the right child of p does not have left child(eg:p = c):
+       return p->right;
+  <2>. if the right child of p has left children(eg: p = b):
+       return p->right->left->left...(till left is nullptr); ->"the most left children" of p's right child
+2. if p does not have a right child
+  <1>. if p is a left child of its father(eg: p = h):
+       return p->father;
+  <2>. if p is a right child of its father(eg: p = i):
+       return p->father->father->...(till 'turning right')
+       for example p = i: 
+	i turns left to its father e;
+	e turns left to its father b;
+	b turns right to its father a;
+	Sooooooo, the answer is a!
+     

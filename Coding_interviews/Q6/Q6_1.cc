@@ -1,6 +1,6 @@
-#include "iostream"
-#include "/home/zhao/Documents/Coding_interviews/DataStucture/LinkNode.h"
-#include "stack"
+#include <iostream>
+#include "../DataStucture/LinkNode.h"
+#include <stack>
 
 //Q6 Solution
 class Solution {

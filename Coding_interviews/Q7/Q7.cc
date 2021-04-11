@@ -1,51 +1,36 @@
-#include "iostream"
-#include "vector"
-#include "map"
-using _value = int32_t;
-
-class TreeNode {
-public:
-    TreeNode() = default;
-
-    TreeNode(int value)
-    : value(value) {
-        left = nullptr;
-        right = nullptr;
-    }
-    TreeNode(int value, TreeNode* left, TreeNode* right)
-    : value(value)
-    , left(left)
-    , right(right) {}
-    TreeNode(const TreeNode&) = default;
-    int32_t value;    
-    TreeNode* left;
-    TreeNode* right;
-};
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include "../DataStucture/BinaryTree.h"
 
 class Solution {
 public:
-    TreeNode* reConstructionTree(std::vector<int>& pre_order, std::vector<int>& in_order, int length) {
-        if (pre_order.empty() || in_order.empty() || in_order.size()!=pre_order.size() || length <= 0) {
+    TreeNode* reConstructionTree(std::vector<int>& pre_order, std::vector<int>& in_order) {
+        if (pre_order.empty() || in_order.empty() || in_order.size()!=pre_order.size()) {
             return nullptr;
         }
+        int n = in_order.size();
+        for (int i = 0; i < n; i++) {
+            mp[in_order[i]] = i;
+        }
+        return reConstructionTree(pre_order, 0, 0, n - 1);
     }
 
     TreeNode* reConstructionTree(std::vector<int>& pre_order,
-                                 std::vector<int>&in_order,
-                                 int length,
-                                 int startPreorder,
-                                 int endPreorder,
-                                 int startInorder,
-                                 int endInorder) {
-        if (pre_order.empty() || in_order.empty() || length<=0 || in_order.size()!=pre_order.size()) {
-            return nullptr;
-        }
-        
+                                 int preIndex,
+                                 int inLeft,
+                                 int inRight) {
+        if (inLeft < inRight) {return nullptr;}
+        TreeNode* root = new TreeNode(pre_order[preIndex]); 
+        int inIndex = mp[pre_order[preIndex]];
+        if (inIndex < inLeft || inIndex > inRight) {printf("Invalid input.");}
+        root->left = reConstructionTree(pre_order, preIndex + 1, inLeft, inIndex - 1);
+        root->right = reConstructionTree(pre_order, preIndex + inIndex - inLeft + 1, inIndex + 1, inRight);
+        return root;
     }
 
-    int indexInOrder(int val, std::vector<int>& in_order) {
-        
-    }
+private:
+    std::unordered_map<int, int> mp;
 };
 
 
@@ -61,6 +46,7 @@ int main() {
 
     std::vector<int> pre_order{1, 2, 4, 7, 3, 5, 6, 8};
     std::vector<int> in_order{4, 7, 2, 1, 5, 3, 8, 6};
-    int length = pre_order.size();
+    Solution s;
+    s.reConstructionTree(pre_order, in_order);
     return 0;
 }
