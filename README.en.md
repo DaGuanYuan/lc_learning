@@ -24,5 +24,19 @@ or
 source exec(for other files)
 ```
 
+Tips: using sed to modificate includePath in batches if needed
+
+eg1: modifying "iostream" to <iostream> under current path
+
+```
+sed -i "s/\"iostream\"/<iostream>/g" `grep \"iostream\" -rl ./`
+```
+eg2: modifying includePath from "./repo/lc_learning/DataStructure/BinaryTree.h" to "../../DataStructure/BinaryTree.h"
+
+```
+sed -i "s/.\/repo\/lc_learning\/DataStructure\/BinaryTree.h/..\/..\/DataStructure\/BinaryTree.h/g" `grep ..\/..\/DataStructure\/BinaryTree.h -rl ./`
+```
+Note: Do not forget using ESCAPE CHARACTER to transform " and / to \" and \/
+
 ####  Declaration
-The code in this repo is all written by Q_shan, for the purpose of learning and trying.
+The code in this repo is all written by Q_shan, for the purpose of learning and training.
