@@ -24,7 +24,7 @@ void printArr(const std::vector<int>& arr) {
 
 int main(int argc, const char** argv) {
     std::vector<int> arr{5,7,5,2,3,1,4,6,1,8};
-    countingSort(arr);
+    radixSort(arr);
     printArr(arr);
     return 0;
 }
