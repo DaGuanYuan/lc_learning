@@ -1,5 +1,5 @@
-#ifndef TREENODE
-#define TREENODE
+#ifndef __TREENODE__
+#define __TREENODE__
 
 #include <iostream>
 
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif // !TreeNode
+#endif // __TREENODE__
