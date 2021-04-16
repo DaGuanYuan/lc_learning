@@ -1,10 +1,10 @@
 #include <iostream>
-#include "../../DataStructure/LinkNode.h"
+#include "../../DataStructure/ListNode.h"
 
-void AddtoTail(LinkNode** pHead, int value) {
-    LinkNode* pNew = new LinkNode(value);
+void AddtoTail(ListNode** pHead, int value) {
+    ListNode* pNew = new ListNode(value);
     if (pHead == nullptr) {*pHead = pNew;}
-    LinkNode* pNode = *pHead;
+    ListNode* pNode = *pHead;
     while (pNode->pNext != nullptr) {
         pNode = pNode->pNext;
     } 
@@ -13,8 +13,8 @@ void AddtoTail(LinkNode** pHead, int value) {
 
 //pHead == nullptr indicates that the list is not existed
 //*pHead == nullptr illuminates that the list is empty
-void AddtoList(LinkNode** pHead, int pos, int value) {
-    LinkNode* pNew = new LinkNode(value);
+void AddtoList(ListNode** pHead, int pos, int value) {
+    ListNode* pNew = new ListNode(value);
     if (pos <= 0 || pHead == nullptr || (pos > 1 && *pHead == nullptr)) {
         printf("Error");
         return;
@@ -23,7 +23,7 @@ void AddtoList(LinkNode** pHead, int pos, int value) {
         pNew->pNext = (*pHead)->pNext;
         (*pHead) = pNew;
     }
-    LinkNode* pNode = *pHead;
+    ListNode* pNode = *pHead;
     while (pNode->pNext!= nullptr && pos!=2) {
         pNode = pNode->pNext;
         --pos;
@@ -36,17 +36,17 @@ void AddtoList(LinkNode** pHead, int pos, int value) {
     pNode->pNext = pNew;
 }
 
-void RemovefromList(LinkNode** pHead, int pos) {
+void RemovefromList(ListNode** pHead, int pos) {
     if (pos <= 0 || pHead == nullptr || (pos > 1 && *pHead == nullptr)) {
         printf("Error");
         return;
     }
-    LinkNode* p = *pHead;
+    ListNode* p = *pHead;
     if (pos == 1) {
         (*pHead) = (*pHead)->pNext;
         delete(p);
     }
-    LinkNode* pNode = *pHead;
+    ListNode* pNode = *pHead;
     while (pNode->pNext != nullptr && pos != 2) {
         pNode = pNode->pNext;
         pos--;

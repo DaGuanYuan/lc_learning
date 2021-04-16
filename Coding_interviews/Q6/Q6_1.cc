@@ -1,17 +1,17 @@
 #include <iostream>
-#include "../../DataStructure/LinkNode.h"
+#include "../../DataStructure/ListNode.h"
 #include <stack>
 
 //Q6 Solution
 class Solution {
 public:
-    void PrintListReversingly_Iteratively(LinkNode* phead) {
+    void PrintListReversingly_Iteratively(ListNode* phead) {
         if (phead == nullptr) {
             printf("List is not existing\n");
             return;
         }
         std::stack<int> stk;
-        LinkNode* p = phead;
+        ListNode* p = phead;
         while (p != nullptr) {
             stk.push(p->val);
             p = p->pNext;
@@ -23,21 +23,21 @@ public:
         printf("\n");
     }
 
-    void PrintListReversingly_Iteratively_Method2(LinkNode* phead) {
+    void PrintListReversingly_Iteratively_Method2(ListNode* phead) {
         if (phead == nullptr) {return;}
         PrintListReversingly_Iteratively_Method2(phead->pNext);
         printf("%d  ", phead->val);
     }
 };
 int main() {
-    LinkNode *p6 = new LinkNode(7);
-    LinkNode *p5 = new LinkNode(3, p6);
-    LinkNode *p4 = new LinkNode(1, p5);
-    LinkNode *p3 = new LinkNode(6, p4);
-    LinkNode *p2 = new LinkNode(2, p3);
-    LinkNode *p1 = new LinkNode(9, p2);
-    LinkNode *p0 = new LinkNode(8, p1);
-    LinkNode *phead = p0;
+    ListNode *p6 = new ListNode(7);
+    ListNode *p5 = new ListNode(3, p6);
+    ListNode *p4 = new ListNode(1, p5);
+    ListNode *p3 = new ListNode(6, p4);
+    ListNode *p2 = new ListNode(2, p3);
+    ListNode *p1 = new ListNode(9, p2);
+    ListNode *p0 = new ListNode(8, p1);
+    ListNode *phead = p0;
     Solution s;
     s.PrintListReversingly_Iteratively_Method2(phead);
     printf("\n");
