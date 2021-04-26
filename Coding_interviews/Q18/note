@@ -1,0 +1,20 @@
+All borders should be thought over according to function parameter list when handling "ListNode" questions
+
+Take Q18 as an example:
+  We have 2 function parameters, ListNode** head and ListNode* pToBeDeleted. All function parameters should
+be considered carefully using the rules below:
+  Does the ListNode exist?(Especially for head)
+  Does the ListNode->next exist?(Especially for head and tail)
+  Does the operating node exist?	
+  Is the operating node the first node or the last node?
+  And then, Consider the general situations.
+
+=>  
+              *head                       x                 pToBeDeleted
+         *head == nullptr                                    delete tail
+                                                             delete head 
+         *head != nullptr                                delete general nodes
+ (head->next == nullptr, only head)                     is pToBeDeleted exist?
+(head->next != nullptr, not only head)             (nullptr or not existed in the list)
+
+ 
