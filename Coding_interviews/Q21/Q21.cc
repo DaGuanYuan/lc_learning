@@ -25,7 +25,13 @@ public:
         int fast = 0;
         int slow = 0;
         while (fast < n) {
-            
+            if ((arr[fast] & 0x1) == 1) {
+                int temp = arr[fast];
+                arr[fast] = arr[slow];
+                arr[slow] = temp;
+                slow++;
+            }
+            fast++;
         }
     }
 };
