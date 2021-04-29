@@ -12,9 +12,11 @@ public:
         }
         std::vector<std::vector<int> > matrixBFS = searchBinaryTreeByLayer(root);
         for (std::vector<std::vector<int> >::iterator it1 = matrixBFS.begin(); it1 != matrixBFS.end(); it1++) {
+            printf("[");
             for (std::vector<int>::iterator it2 = it1->begin(); it2 != it1->end(); it2++) {
-                
+                printf("%d ", *it2);
             }
+            printf("]\n");
         }
     }
 
@@ -29,14 +31,9 @@ public:
             while (qSize) {
                 TreeNode* tmpNode = q.front();
                 q.pop();
-                if (tmpNode->left) {
-                    q.push(tmpNode->left);
-                    temp.push_back(tmpNode->left->val);    
-                }
-                if (tmpNode->right) {
-                    q.push(tmpNode->right);
-                    temp.push_back(tmpNode->right->val);    
-                }
+                temp.push_back(tmpNode->val);
+                if (tmpNode->left) {q.push(tmpNode->left);}
+                if (tmpNode->right) {q.push(tmpNode->right);}
                 qSize--;
             }
             rst.push_back(temp);
@@ -66,7 +63,10 @@ int main(int argc, const char** argv) {
     TreeNode* t2 = new TreeNode(2, t4, t5);
     TreeNode* t1 = new TreeNode(1, t2, t3);
     TreeNode* root = t1;
+    printf("Before Mirroring:\n");
+    s.printBinaryTreeByLayer(root);
     s.mirrorRecursively(root);
-    
+    printf("After Mirroring:\n");
+    s.printBinaryTreeByLayer(root);
     return 0;
 }
