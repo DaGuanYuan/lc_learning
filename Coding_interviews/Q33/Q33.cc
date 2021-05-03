@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 
 class Solution {
 public:
@@ -18,6 +19,21 @@ public:
         if (arr.empty()) {return true;}
         int n = arr.size();
         return verifySeqofBSTCore(arr, 0, n - 1);
+    }
+
+    bool verifySeqofBST_TrickySolution(std::vector<int>& arr) {
+        if (arr.empty()) {return true;}
+        std::stack<int> stk;
+        int rootVal = INT32_MAX;
+        for (int i = arr.size() - 1; i >=0; i--) {
+            if (arr[i] > rootVal) {return false;}
+            while (!stk.empty() && stk.top() > arr[i]) {
+                rootVal = stk.top();
+                stk.pop();
+            }
+            stk.push(arr[i]);
+        }
+        return true;
     }
 };
 
