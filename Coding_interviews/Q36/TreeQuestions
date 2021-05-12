@@ -1,0 +1,8 @@
+When solving "Tree Questions", recursion is the most useful method.
+Here are some notices and steps regarding recursion:
+#1 Do not fall into details, trust the defination of your functions!(How many
+stacks can your brain contain?) As you believe the defination, the code you write
+will automatically prove it (since your logic is as the same).
+#2 Determine structures: preOrder or inOrder or postOrder.
+#3 Determine what root node should do.
+#4 Determine boundary limits and termination by considering "only root node and nullptr" situation.
