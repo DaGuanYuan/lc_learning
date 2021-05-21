@@ -5,6 +5,9 @@ class Solution {
 public:
     int digitalAtIndex(int index) {
         if (index < 0) {return -1;}
+        // As the same with the last question, digitNums could be very
+        // very large. So the best way to solve the problem is using 
+        // string to simulate the process
         long long digitNums = 0;
         int tempIndex = index;
         int digit = 1;

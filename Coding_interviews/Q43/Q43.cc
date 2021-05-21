@@ -4,31 +4,35 @@
 class Solution {
 public:
     int numsofOneBetween1toN(int n) {
-        if (n <= 0) {printf("Invalid Input!\n");}
+        if (n <= 0) {return 0;}
+        int totalNumsof1Between1toN = 0;
+        int cur = 0;
+        // in fact, considering digit could be very very large
+        // so you'd better use string to simulate this process
+        long long digit = 1;
+        int low = 0;
+        int high = 0;
         int tempN = n;
-        int curDigit = 0;
-        int curDigitTotalNumof1 = 0;
-        int curDigitNum = 0;
-        int totalNumof1 = 0;
-        while (tempN / 10) {
-            curDigitNum = tempN % 10;
-            curDigit += 1;
-            // f(n) = 10f(n-1) + 10^(n-1)
-            // f(n):numsof1 between 1...10^n-1
-            // eg: f(3) = numsof1 between 1...999
-            // f(0) = 0
-            if (curDigit > 1) {curDigitTotalNumof1 = 10 * curDigitTotalNumof1 + std::pow(10, curDigit - 1);} 
-            if (curDigitNum >= 1) {totalNumof1 += std::pow(10, curDigit - 1);}
-            totalNumof1 += curDigitNum * curDigitTotalNumof1;
-            tempN /= 10;
+        while (tempN) {
+            low += cur * (digit / 10);
+            cur = tempN % 10;
+            high = tempN / 10;
+            if (cur == 0) {totalNumsof1Between1toN += high * digit;}
+            else if (cur == 1) {totalNumsof1Between1toN += (high * digit + low + 1);}
+            else {totalNumsof1Between1toN += (high + 1) * digit;}
+            digit *= 10;
+            tempN = high;
         }
-        int lastNum = 1 * (n - tempN * std::pow(10, curDigit));
-        totalNumof1 += lastNum;
-        return totalNumof1;
+        return totalNumsof1Between1toN;
     }
 };
 
 int main(int argc, const char** argv) {
     Solution s;
+    // n <= 0 , n = 1
+    // normal
+    int n = 12;
+    int totalNums = s.numsofOneBetween1toN(n);
+    printf("Numbers of 1 between 1 to %d is %d\n", n, totalNums);
     return 0;
 }
