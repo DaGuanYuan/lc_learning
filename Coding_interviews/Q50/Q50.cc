@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include <unordered_map>
+#include <vector>
 
 class Solution {
 public:
@@ -10,6 +11,21 @@ public:
         for (int i = 0; i < str.size(); i++) {mp[str[i]]++;}
         for (int i = 0; i < str.size(); i++) {
             if (mp[str[i]] == 1) {return str[i];}
+        }
+        return ' ';
+    }
+
+    char firstNotRepeatingChar_OrderedHashmap(std::string& str) {
+        if (str.empty()) {return ' ';}
+        std::unordered_map<char, int> mp;
+        std::vector<char> key;
+        for (const char& ch : str) {
+            if (mp.find(ch) == mp.end()) {key.push_back(ch);}
+            mp[ch] = mp.find(ch) == mp.end(); 
+        }
+        // key has less than 26 characters
+        for (const char& ch : key) {
+            if (mp[ch] == 1) {return ch;}
         }
         return ' ';
     }
