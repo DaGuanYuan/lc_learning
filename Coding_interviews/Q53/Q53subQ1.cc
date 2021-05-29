@@ -3,6 +3,7 @@
 
 class Solution {
 public:
+    // In this Solution, if vector arr = {1,1,1,1,1,1}, time complexity will degenerate to O(n)
     int countK(std::vector<int>& arr, int k) {
         if (arr.empty()) {
             printf("The array is empty! please have a check!\n");
@@ -32,6 +33,55 @@ public:
             }
         }
         return count;
+    }
+
+    int countK_Solution2(std::vector<int>& arr, int k) {
+        if (arr.empty()) {
+            printf("The array is empty! please have a check!\n");
+            return 0;
+        }
+        int left = 0;
+        int right = arr.size() - 1;
+        int mid = 0;
+        while (left <= right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] >= k) {right = mid - 1;}
+            else {left = mid + 1;}
+        }
+        int leftBoundary = right;
+
+        left = 0;
+        right = arr.size() - 1;
+        while (left <= right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] > k) {right = mid - 1;}
+            else {left = mid + 1;}
+        }
+        int rightBoundary = left;
+
+        return rightBoundary - leftBoundary -1;
+    }
+
+    // simplify solution2 by only finding right boundaries
+    // The number of k = rightBoudary_k - rightBoundary_k-1
+    int countK_Solution3(std::vector<int>& arr, int k) {
+        if (arr.empty()) {
+            printf("The array is empty! please have a check!\n");
+            return 0;
+        }
+        return rightBoundaryIndex(arr, k) - rightBoundaryIndex(arr, k - 1);
+    }
+
+    int rightBoundaryIndex(std::vector<int>& arr, int k) {
+        int left = 0;
+        int right = arr.size() - 1;
+        int mid = 0;
+        while (left <= right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] <= k) {left = mid + 1;}
+            else {right = mid - 1;}
+        }
+        return left;
     }
 };
 

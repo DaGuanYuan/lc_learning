@@ -1,0 +1,21 @@
+using void dfs() and variables outside function or void dfs(&)
+otherwise, function parameters will not be updated in time!!!!
+
+eg: (in order)
+
+void dfs(TreeNode* root) {
+    if (!root) {return;}
+    dfs(root->left);
+    if (k-- == 1) {
+        res = root->val; //k, res are defined outside the function
+        return;
+    }
+    dfs(root->right);
+}
+
+int res;
+int k;
+
+OR
+
+void dfs(TreeNode* root, int& res, int& k) {...same as above...}
