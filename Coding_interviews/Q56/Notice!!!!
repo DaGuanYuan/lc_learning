@@ -1,0 +1,4 @@
+Here, I write a file intentionly to notice that '==' is advanced than bit operation!
+if (a & b == 1) means if (a & (b == 1)) !!!!
+But most of time you want to judge whether (a & b) == 1
+So, () is really significant even critical!!!
