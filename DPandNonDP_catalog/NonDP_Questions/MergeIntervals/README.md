@@ -1,4 +1,5 @@
-Merge Intervals (medium)
-Insert Interval (medium)
-Intervals Intersection (medium)
-Conflicting Appointments (medium)
+- Merge Intervals (medium)
+- Insert Interval (medium)
+- Intervals Intersection (medium)
+- Conflicting Appointments (medium)
+
