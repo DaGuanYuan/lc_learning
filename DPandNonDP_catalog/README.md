@@ -1,0 +1,3 @@
+All questions showed in this catalog are provided by  **Grokking the Coding Interview: Patterns for Coding Questions**, a famous course on https://www.educative.io/courses/grokking-the-coding-interview?aff=K7qB
+
+This catalog is only used to supplement **Coding_interviews** and **leetcode 101**. I am not going to solve the problems since I have no money to buy the course and more significant, in the world of computer there are too many wonderful things to explore. Please,  please  _do NOT_  spend most of your time on leetcode.
