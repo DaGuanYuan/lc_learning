@@ -1,0 +1,3 @@
+- Find the Median of a Number Stream (medium)
+- Sliding Window Median (hard)
+- Maximize Capital (hard)
