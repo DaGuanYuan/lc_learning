@@ -1,0 +1,3 @@
+- 241. DifferentWays to Add Parentheses (Medium)
+- 932. Beautiful Array (Medium)
+- 312. Burst Balloons (Hard)
