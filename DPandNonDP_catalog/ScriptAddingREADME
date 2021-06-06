@@ -1,0 +1,4 @@
+# This script aims to add README in directors
+for i in `ls NonDP_Questions`;
+do touch $i/README.md;
+done
