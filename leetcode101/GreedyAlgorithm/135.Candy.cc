@@ -1,69 +1,48 @@
 #include <iostream>
 #include <vector>
+#include <numeric>
 
 class Solution {
 public:
-    int candy(std::vector<int>& rating) {
-        if (rating.empty()) {return 0;}
-        int n = rating.size();
-        if (n == 1) {return 1;}
-        int minRating = INT32_MAX;
-        int minRatingIndex = 0;
-        for (int i = 0; i < n; i++) {
-            if (minRating > rating[i]) {
-                minRating = rating[i];
-                minRatingIndex = i;
+    int candy_Soluton1(std::vector<int>& ratings) {
+        int size = ratings.size();
+        if (size < 2) {return size;}
+        std::vector<int> candySplit(size, 1);
+        for (int i = 1; i < size; i++) {
+            if (ratings[i] > ratings[i - 1]) {
+                candySplit[i] = candySplit[i - 1] + 1;
             }
         }
-        int candy = 1;
-        int candyinTotal = 1;
-        int left = minRatingIndex - 1;
-        int continuous = 0;
-        while (left >= 0) {
-            if (rating[left] > rating[left + 1]) {candy++;}
-            else if (rating[left] == rating[left + 1]) {candy = 1;}
-            else {
-                int rightCandy = candy;
-                while (left >= 0 && rating[left] < rating[left + 1]) {
-                    if (candy == 1) {
-                        continuous++;
-                        if (continuous > rightCandy) {candyinTotal++;}
-                        candyinTotal += continuous; //rating[right - 1] should + 1
-                    }
-                    candy = 1;
-                    left--;
-                    candyinTotal += candy;
-                }
-                continuous = 0;
-                continue;
+        for (int i = size - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1]) {
+                candySplit[i] = std::max(candySplit[i], candySplit[i + 1] + 1);
             }
-            candyinTotal += candy;
-            left--;  
         }
-        int right = minRatingIndex + 1;
-        candy = 1;
-        while (right < n) {
-            if (rating[right] > rating[right - 1]) {candy++;}
-            else if (rating[right] == rating[right - 1]) {candy = 1;}
-            else {
-                int leftCandy = candy;
-                while (right < n && rating[right] < rating[right - 1]) {
-                    if (candy == 1) {
-                        continuous++;
-                        if (continuous > leftCandy) {candyinTotal++;}
-                        candyinTotal += continuous; //rating[right - 1] should + 1
-                    }
-                    candy = 1;
-                    right++;
-                    candyinTotal += candy;
-                }
-                continuous = 0;
-                continue;
-            }
+        int totalCandy = std::accumulate(candySplit.begin(), candySplit.end(), 0);
+        return totalCandy;
+    }
 
-            candyinTotal += candy;
-            right++;
+    int candy_Solution2(std::vector<int>& ratings) {
+        int size = ratings.size();
+        if (size < 2) {return size;}
+        int increase = 1;
+        int currentCandy = 1;
+        int totalCandy = 1;
+        int decrease = 0;
+        for (int i = 1; i < size; i++) {
+            if (ratings[i] >= ratings[i - 1]) {
+                decrease = 0;
+                currentCandy = ratings[i] == ratings[i - 1] ? 1 : currentCandy + 1;
+                totalCandy += currentCandy;
+                increase = currentCandy;
+            }
+            else {
+                decrease++;
+                if (decrease == increase) {decrease++;}
+                totalCandy += decrease;
+                currentCandy = 1;
+            }
         }
-        return candyinTotal;
+        return totalCandy;
     }
 };
