@@ -10,3 +10,4 @@ while (left <= right) {
 
 # how to determine '<' or '<=' || +1 or not +1
 # consider boundaries! In fact, you can only try array who has only 2 elements and 1 elements
+# Not drop into stereotype! See leetcode 154!

@@ -8,9 +8,11 @@ public:
         int left = 0, right = nums.size() - 1, mid = 0;
         while (left <= right) {
             mid = left + ((right - left) >> 1);
-            if (nums[mid] == nums[left]) {++left;}
-            else if (nums[mid] > nums[left]) {left = mid + 1;}
-            else {right = mid - 1;}
+            // here must be right since 3 / 2 = 1 (Rounding left)
+            if (nums[mid] == nums[right]) {--right;}
+            else if (nums[mid] > nums[right]) {left = mid + 1;}
+            // modified right = mid - 1 -> right = mid to ensure minimum number not being passed
+            else {right = mid;}
         }
         return nums[mid];
     }
