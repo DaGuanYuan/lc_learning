@@ -21,7 +21,7 @@ public:
             bucket[p.second - minASCII].push_back(p.first);
         }
         for (int i = bucketSize - 1; i >= 0; --i) {
-            while (!bucket[i].empty()) {
+            if (!bucket[i].empty()) {
                 for (const char ch : bucket[i]) {
                     int times = i + minASCII;
                     while (times) {
