@@ -4,7 +4,7 @@
 
 using WordList = std::vector<std::string>;
 
-class Solutio {
+class Solution {
 public:
     std::vector<WordList> findLadders(std::string beginWord,
                                       std::string endWord,
