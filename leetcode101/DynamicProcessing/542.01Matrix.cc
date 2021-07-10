@@ -18,7 +18,7 @@ public:
                 }
             }
         }
-        int temp = 0;
+        
         for (int i = row - 1; i >= 0; --i) {
             for (int j = column - 1; j >= 0; --j) {
                 if (mat[i][j] == 1) {
